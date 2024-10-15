@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/base}" lang="en">
+
+<head>
+  <title>Math Page</title>
+  <script>
+    function calculateMath() {
+      const mathField = document.getElementById('mathField').value;
+      let result;
+      try {
+        result = eval(mathField);
+      } catch (e) {
+        result = 'Error: Invalid expression';
+      }
+      document.getElementById('mathMessage').innerText = 'The result is: ' + result;
+    }
+  </script>
+</head>
+
+<body>
+  <div layout:fragment="body" th:remove="tag">
+      <!-- Page specific body additions -->
+      <div class="contact" style="height: 35vh;">
+          <div class="row justify-content-left" style="margin: 2%;">
+                <label for="mathField">Type a math expression?</label>
+                <input name="math" id="mathField">
+                <button onclick="calculateMath()">Calculate!</button>
+                <p id="mathMessage">The result is: </p>
+          </div>
+      </div>
+  </div>
+</body>
+
+</html>
